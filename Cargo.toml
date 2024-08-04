@@ -1,0 +1,11 @@
+[package]
+name = "terminal-mouse-synchronization"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+winapi = { version = "0.3.9", features = ["winuser", "windef"] }
+tokio = { version = "1.16.1", features = ["full"] }
+terminal_size = "0.3.0"
