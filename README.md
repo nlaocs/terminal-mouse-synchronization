@@ -1,0 +1,1 @@
+# terminal-and-mouse-synchronization
