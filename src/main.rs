@@ -40,8 +40,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut terminal_size_x = 0;
     let mut terminal_size_y = 0;
 
-    let window_size_x = 3839;
-    let window_size_y = 2159;
     let window_size_x = unsafe { GetSystemMetrics(0) };
     let window_size_y = unsafe { GetSystemMetrics(1) };
 
