@@ -7,6 +7,7 @@ use terminal_size::{Height, terminal_size, Width};
 use tokio::time::Duration;
 use winapi::shared::windef::POINT;
 use winapi::um::winuser::GetCursorPos;
+use winapi::um::winuser::GetSystemMetrics;
 
 struct PointWrapper(POINT);
 
@@ -41,6 +42,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let window_size_x = 3839;
     let window_size_y = 2159;
+    let window_size_x = unsafe { GetSystemMetrics(0) };
+    let window_size_y = unsafe { GetSystemMetrics(1) };
 
     let char_radius_x = 5;
     let char_radius_y = 3;
@@ -71,7 +74,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         if wrapped_point != PointWrapper(point) {
-            let (term_x, term_y) = cursor_to_term_coord(window_size_x, window_size_y, point.x as u32, point.y as u32, terminal_size_x as u32, terminal_size_y as u32);
+            let (term_x, term_y) = cursor_to_term_coord(window_size_x as u32, window_size_y as u32, point.x as u32, point.y as u32, terminal_size_x as u32, terminal_size_y as u32);
             execute!(stdout, terminal::Clear(terminal::ClearType::All))?;
             for i in 0..=term_x {
                 for j in 0..=term_y {
