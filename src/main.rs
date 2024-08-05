@@ -7,6 +7,7 @@ use terminal_size::{Height, terminal_size, Width};
 use tokio::time::Duration;
 use winapi::shared::windef::POINT;
 use winapi::um::winuser::GetCursorPos;
+use winapi::um::winuser::GetSystemMetrics;
 
 struct PointWrapper(POINT);
 
